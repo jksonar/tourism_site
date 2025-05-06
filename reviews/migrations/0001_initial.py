@@ -10,21 +10,24 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('packages', '0001_initial'),
+        ('contenttypes', '0002_remove_content_type_name'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Booking',
+            name='Review',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('booking_date', models.DateField(auto_now_add=True)),
-                ('travel_date', models.DateField()),
-                ('number_of_people', models.PositiveIntegerField()),
-                ('status', models.CharField(choices=[('Pending', 'Pending'), ('Confirmed', 'Confirmed'), ('Cancelled', 'Cancelled')], default='Pending', max_length=20)),
-                ('package', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='packages.travelpackage')),
+                ('object_id', models.PositiveIntegerField()),
+                ('rating', models.PositiveSmallIntegerField(choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])),
+                ('comment', models.TextField()),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('content_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contenttypes.contenttype')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
+            options={
+                'ordering': ['-created_at'],
+            },
         ),
     ]

@@ -1,6 +1,11 @@
-from django.contrib import admin
-from .models import Destination, TourPackage, Booking
+# OLD (wrong)
+# from .models import Destination, TourPackage, Booking
 
-admin.site.register(Destination)
-admin.site.register(TourPackage)
-admin.site.register(Booking)
+# ✅ NEW (correct)
+from .models import ContactMessage
+
+from django.contrib import admin
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'subject', 'submitted_at')

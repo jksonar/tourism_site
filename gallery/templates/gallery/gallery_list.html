@@ -1,0 +1,14 @@
+<h2>Photo Gallery</h2>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+  {% for image in images %}
+    <div style="width: 250px;">
+      <img src="{{ image.image.url }}" alt="{{ image.title }}" style="width:100%; height: auto;">
+      <h4>{{ image.title }}</h4>
+      {% if image.destination %}
+        <p><strong>Destination:</strong> {{ image.destination.name }}</p>
+      {% endif %}
+      <p>{{ image.description }}</p>
+    </div>
+  {% endfor %}
+</div>
