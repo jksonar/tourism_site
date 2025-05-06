@@ -20,6 +20,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('jet/', include('jet.urls', 'jet')),
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
     path('accounts/', include('accounts.urls')),
@@ -28,6 +30,7 @@ urlpatterns = [
     path('packages/', include('packages.urls')),
     path('reviews/', include('reviews.urls')),
     path('gallery/', include('gallery.urls')),
+    path('blog/', include('blog.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

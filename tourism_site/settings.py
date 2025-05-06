@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -129,6 +130,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -149,3 +152,8 @@ LOGIN_REDIRECT_URL = '/'
 # ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 # ACCOUNT_USERNAME_REQUIRED = True
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For dev only
+
+JET_DEFAULT_THEME = 'default'  # or 'light-gray', 'green', etc.
+
+JET_SIDE_MENU_COMPACT = True
+JET_INDEX_DASHBOARD = 'yourapp.dashboard.CustomIndexDashboard'
