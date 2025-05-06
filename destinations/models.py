@@ -1,3 +1,4 @@
+from reviews.models import Review  # optionally for type hinting
 from django.db import models
 
 class Destination(models.Model):
@@ -10,3 +11,9 @@ class Destination(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def reviews(self):
+        from django.contrib.contenttypes.models import ContentType
+        content_type = ContentType.objects.get_for_model(self)
+        return Review.objects.filter(content_type=content_type, object_id=self.id)

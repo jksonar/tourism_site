@@ -18,3 +18,22 @@ class Booking(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.package.title} ({self.status})"
+    
+# from django.db import models
+# from django.contrib.auth.models import User
+# from packages.models import TravelPackage
+
+# class Booking(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     package = models.ForeignKey(TravelPackage, on_delete=models.CASCADE)
+#     booking_date = models.DateField(auto_now_add=True)
+#     travel_date = models.DateField()
+#     number_of_people = models.PositiveIntegerField()
+#     status = models.CharField(max_length=20, choices=[
+#         ('Pending', 'Pending'),
+#         ('Confirmed', 'Confirmed'),
+#         ('Cancelled', 'Cancelled')
+#     ], default='Pending')
+
+#     def __str__(self):
+#         return f"{self.user.username} - {self.package.title}"
