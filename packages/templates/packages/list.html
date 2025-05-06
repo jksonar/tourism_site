@@ -1,0 +1,14 @@
+<h2>Travel Packages</h2>
+
+<ul>
+  {% for pkg in packages %}
+    <li>
+      <a href="{% url 'package_detail' pkg.pk %}">
+        <strong>{{ pkg.title }}</strong><br>
+        Destination: {{ pkg.destination.name }}<br>
+        Duration: {{ pkg.duration_days }} days<br>
+        Price: ${{ pkg.price }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,8 @@
+<h1>Explore Destinations</h1>
+{% for destination in destinations %}
+  <div>
+    <h2>{{ destination.name }}</h2>
+    <img src="{{ destination.image.url }}" alt="{{ destination.name }}" width="300">
+    <p>{{ destination.description }}</p>
+  </div>
+{% endfor %}
